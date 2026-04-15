@@ -24,3 +24,56 @@ body{
             color: partial.$text-color;
         }
 }
+
+img{
+    max-width: 100%;
+    height: auto;
+}
+
+.container{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-auto-rows: minmax(50px, auto); /*ved brug af minmax sikrers en minimum str af grid elementer, og ved auto sikres, at boksen tilpasser sig efter indholdet*/
+}
+
+/*navigation*/
+header{
+    grid-column: 1/6; /*grid columns start og slut på en på en linje i stedet for to. så start på linje 1 og slut på linje 6*/
+    background-color: partial.$nav-color;
+    border-bottom: 4px solid partial.$primary-color;
+}
+
+nav{
+    color: partial.$text-color;
+    height: 4em;
+    padding: 1em;
+    /*flexbox mixin incomming*/
+
+        img{
+            width: 70px;
+        }
+
+        #bars{
+            display: none;
+        }
+
+        ul{
+            /*flexbox mixin incoming*/
+            list-style-type: none;
+        }
+
+        a{
+            color: partial.$text-color;
+            padding: 0.5em;
+            margin: 0.5em;
+            font-size: 20px;
+            font-weight: bold;
+            text-decoration: none;
+
+            
+        }
+
+        a:hover{
+            color: partial.$primary-color;
+        }
+}
