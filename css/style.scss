@@ -1,0 +1,26 @@
+@use 'partial'; /*når @use bruges, bliver partial filen hentet ind som module*/
+
+/*general styling*/
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body{
+    padding: 0;
+    font-family: partial.$font; /*variablen kaldes på inde fra partial filen*/
+    background-color: partial.$bg-color;
+
+    /*nesting - indrykning af elementer, der har direkte relation til det øverste element (i denne situation er det body)*/
+        p{
+            font-size: 16px;
+            color: partial.$text-color;
+            line-height: 1.5;
+        }
+
+        h1, h2, h3, h4, h5, h6{
+            font-weight: 600;
+            color: partial.$text-color;
+        }
+}
