@@ -170,4 +170,8 @@ main .cta-wrapper .cta-bokse {
   text-decoration: none;
   text-align: center;
   display: block;
+}
+.cta-1 a:hover, .cta-2 a:hover, .cta-3 a:hover {
+  background-color: #133833;
+  transition: 0.3s ease-in-out;
 }/*# sourceMappingURL=style.css.map */
