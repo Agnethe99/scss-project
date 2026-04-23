@@ -2,12 +2,9 @@
 
 /*general styling*/
 
-*{
+body{
     box-sizing: border-box;
     margin: 0;
-}
-
-body{
     padding: 0;
     font-family: partial.$font; /*variablen kaldes på inde fra partial filen*/
     background-color: partial.$bg-color;
@@ -23,6 +20,23 @@ body{
             font-weight: 600;
             color: partial.$text-color;
         }
+}
+
+/*Skip to main content code snippet fra:https://www.a11y-collective.com/blog/skip-to-main-content/ */
+
+.screen-reader-text {
+    position: absolute; //Positions the link absolutely on the page, allowing it to be placed anywhere.
+    left: -9999px; //Moves the link far off-screen to the left, making it invisible to sighted users.
+    z-index: 999; //Sets a high z-index, ensuring that the link will be on top of other page elements if it becomes visible.
+    padding: 1em;
+    background-color: black;
+    color: white;
+    opacity: 0; //Sets the link's opacity to 0, making it fully transparent and invisible.
+}
+.screen-reader-text:focus {
+    left: 50%; // When the link receives focus (e.g., when a keyboard user tabs to it), it is repositioned horizontally to the centre of the screen.
+    transform: translateX(-50%); //This centres the link horizontally by moving it back to the left by 50% of its own width.
+    opacity: 1; //The link's opacity is set to 1, making it fully visible.
 }
 
 img{
@@ -47,7 +61,7 @@ nav{
     color: partial.$text-color;
     height: 4em;
     padding: 1em;
-    /*flexbox mixin incomming*/
+    @include partial.flex($justify: space-between); /*den ene lokale mixin variabel er belvet ændret*/
 
         img{
             width: 70px;
@@ -58,7 +72,7 @@ nav{
         }
 
         ul{
-            /*flexbox mixin incoming*/
+            @include partial.flex;
             list-style-type: none;
         }
 
@@ -73,7 +87,82 @@ nav{
             
         }
 
-        a:hover{
+        a:hover, .active{
             color: partial.$primary-color;
+        }
+}
+
+/*banner section*/
+.header-img{
+    grid-column: 1/6;
+    border-bottom: 4px solid partial.$primary-color;
+    background-image: url(../img-1/computer.jpg);
+    background-repeat: no-repeat; /*billedet skal ikke gentage sig*/
+    background-size: cover; /*contain: hele billedet synlig, cover: billedet fylder hele boksen*/
+    background-position: center;
+    height: 75vh;
+    margin-bottom: 1em;
+
+        .banner-tekst{
+            position: absolute;
+            left: 5%;
+            top: 30%;
+        }
+        h1{
+            font-size: 2.3vw;
+        }
+        p{
+            font-size: 2vw;
+        }
+        a{
+            @include partial.btn;
+            position: absolute;
+            &:hover{
+                background-color: partial.$secondary-color;
+                transition: 0.3s ease-in-out;
+            }
+        }
+}
+
+/*forside styling*/
+main{
+    grid-column: 1/6;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+
+        h2{
+            font-size: 30px;
+            text-align: center;
+            display: block;
+        }
+        .cta-wrapper{
+            grid-column: 1/7;
+
+            .cta-bokse{
+                display: flex;
+                justify-content: space-around;
+            }
+        }
+}
+
+/*cta-bokse*/
+.cta-1, .cta-2, .cta-3{
+    @include partial.cta-box;
+
+        img{
+            margin: 0 auto;
+            width: 60%;
+            display: block; /*margin virker ikke på inline-elementer (billeder, osv). inline-elementer fylder ikke den fulde bredde, der er tilgængelig, hvilket blok-elementer gør*/
+        }
+        p{
+            margin-bottom: 2em;
+        }
+        a{
+            @include partial.btn;
+            display: block;
+            &:hover{
+                background-color: $secondary-color;
+                transition: 0.3s ease-in-out;
+            }
         }
 }

@@ -1,14 +1,12 @@
 @charset "UTF-8";
 /*partial filen er en underfil til style.scss. nødvendig, da compileren ellers opretter css.map og css fil*/
-/*variabler*/
+/*globale variabler*/
+/*mixins er en måde at genbruge kode på. man tager et kodestykke, som bruges flere gange og samler det et sted*/
 /*når @use bruges, bliver partial filen hentet ind som module*/
 /*general styling*/
-* {
+body {
   box-sizing: border-box;
   margin: 0;
-}
-
-body {
   padding: 0;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; /*variablen kaldes på inde fra partial filen*/
   background-color: #f0f0f0;
@@ -22,6 +20,23 @@ body p {
 body h1, body h2, body h3, body h4, body h5, body h6 {
   font-weight: 600;
   color: #333333;
+}
+
+/*Skip to main content code snippet fra:https://www.a11y-collective.com/blog/skip-to-main-content/ */
+.screen-reader-text {
+  position: absolute;
+  left: -9999px;
+  z-index: 999;
+  padding: 1em;
+  background-color: black;
+  color: white;
+  opacity: 0;
+}
+
+.screen-reader-text:focus {
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 1;
 }
 
 img {
@@ -46,7 +61,11 @@ nav {
   color: #333333;
   height: 4em;
   padding: 1em;
-  /*flexbox mixin incomming*/
+  /*lokale variabler - standard værdien, disse kan ændres i scss filen*/
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /*den ene lokale mixin variabel er belvet ændret*/
 }
 nav img {
   width: 70px;
@@ -55,7 +74,10 @@ nav #bars {
   display: none;
 }
 nav ul {
-  /*flexbox mixin incoming*/
+  /*lokale variabler - standard værdien, disse kan ændres i scss filen*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
   list-style-type: none;
 }
 nav a {
@@ -66,6 +88,86 @@ nav a {
   font-weight: bold;
   text-decoration: none;
 }
-nav a:hover {
+nav a:hover, nav .active {
   color: #388071;
+}
+
+/*banner section*/
+.header-img {
+  grid-column: 1/6;
+  border-bottom: 4px solid #388071;
+  background-image: url(../img-1/computer.jpg);
+  background-repeat: no-repeat; /*billedet skal ikke gentage sig*/
+  background-size: cover; /*contain: hele billedet synlig, cover: billedet fylder hele boksen*/
+  background-position: center;
+  height: 75vh;
+  margin-bottom: 1em;
+}
+.header-img .banner-tekst {
+  position: absolute;
+  left: 5%;
+  top: 30%;
+}
+.header-img h1 {
+  font-size: 2.3vw;
+}
+.header-img p {
+  font-size: 2vw;
+}
+.header-img a {
+  background-color: #388071;
+  padding: 0.8em 1em;
+  border-radius: 8px;
+  color: white;
+  text-decoration: none;
+  text-align: center;
+  position: absolute;
+}
+.header-img a:hover {
+  background-color: #133833;
+  transition: 0.3s ease-in-out;
+}
+
+/*forside styling*/
+main {
+  grid-column: 1/6;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+}
+main h2 {
+  font-size: 30px;
+  text-align: center;
+  display: block;
+}
+main .cta-wrapper {
+  grid-column: 1/7;
+}
+main .cta-wrapper .cta-bokse {
+  display: flex;
+  justify-content: space-around;
+}
+
+/*cta-bokse*/
+.cta-1, .cta-2, .cta-3 {
+  background-color: white;
+  width: 20vw;
+  padding: 2em;
+  margin: 2em auto; /*auto centrerer*/
+}
+.cta-1 img, .cta-2 img, .cta-3 img {
+  margin: 0 auto;
+  width: 60%;
+  display: block; /*margin virker ikke på inline-elementer (billeder, osv). inline-elementer fylder ikke den fulde bredde, der er tilgængelig, hvilket blok-elementer gør*/
+}
+.cta-1 p, .cta-2 p, .cta-3 p {
+  margin-bottom: 2em;
+}
+.cta-1 a, .cta-2 a, .cta-3 a {
+  background-color: #388071;
+  padding: 0.8em 1em;
+  border-radius: 8px;
+  color: white;
+  text-decoration: none;
+  text-align: center;
+  display: block;
 }/*# sourceMappingURL=style.css.map */

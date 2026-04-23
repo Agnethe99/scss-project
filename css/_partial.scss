@@ -1,6 +1,6 @@
 /*partial filen er en underfil til style.scss. nødvendig, da compileren ellers opretter css.map og css fil*/
 
-/*variabler*/
+/*globale variabler*/
 $primary-color: #388071;
 $secondary-color: #133833;
 $bg-color: #f0f0f0;
@@ -8,3 +8,27 @@ $nav-color: #ffffff;
 $text-color: #333333;
 $footer-color: #0a1f1c;
 $font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+
+/*mixins er en måde at genbruge kode på. man tager et kodestykke, som bruges flere gange og samler det et sted*/
+@mixin flex($justify: center, $align: center){ /*lokale variabler - standard værdien, disse kan ændres i scss filen*/
+    display: flex;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+@mixin btn($bg-color: $primary-color, $btn-padding: 0.8em 1em){
+    background-color: $bg-color;
+    padding: $btn-padding;
+    border-radius: 8px;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+}
+
+@mixin cta-box($bredde: 20vw){
+    background-color: white;
+    width: $bredde;
+    padding: 2em;
+    margin: 2em auto; /*auto centrerer*/
+}
