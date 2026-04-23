@@ -174,4 +174,49 @@ main .cta-wrapper .cta-bokse {
 .cta-1 a:hover, .cta-2 a:hover, .cta-3 a:hover {
   background-color: #133833;
   transition: 0.3s ease-in-out;
+}
+
+/*tekst billede sektion*/
+.txt-img-section {
+  grid-column: 1/7;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.tekst {
+  grid-column: 1/5;
+  background-color: #133833;
+  padding: 2em 4em 4em 4em;
+}
+.tekst h2 {
+  color: #f0f0f0;
+  text-align: left;
+}
+.tekst p {
+  color: #f0f0f0;
+}
+.tekst p:nth-of-type(4) {
+  margin-bottom: 3em;
+}
+.tekst .secondary-btn {
+  background-color: transparent;
+  padding: 0.8em 1em;
+  border-radius: 8px;
+  color: white;
+  text-decoration: none;
+  text-align: center;
+  border: 2px solid white;
+}
+.tekst .secondary-btn:hover {
+  background-color: white;
+  color: #133833;
+  transition: 0.3s ease-in-out;
+}
+
+.billede {
+  grid-column: 5/8;
+  background-image: url(../img-1/presentation.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }/*# sourceMappingURL=style.css.map */
