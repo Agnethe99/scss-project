@@ -207,3 +207,147 @@ main{
     background-size: cover;
     background-position: center;
 }
+
+/*kontakt formular*/
+.kontakt-bg-img{
+    grid-column: 1/7;
+    background: linear-gradient(rgba(142, 142, 142, 0.8), rgba(142, 142, 142, 0.8)), url(../img-1/meeting.jpg); //rgb er farven, a er opaciteten, url indsætter baggrundsbilledet
+    background-size: cover;
+}
+
+.kontaktform{
+    width: 50%;
+    background-color: partial.$bg-color;
+    border-radius: 5px;
+    padding: 1.3em;
+    margin: 4em auto;
+        h2{
+            font-size: 25px;
+            margin-bottom: 0;
+            margin-left: 0.5em;
+            text-align: left;
+        }
+        p{
+            margin-left: 1em;
+        }
+}
+
+.section-form{
+    display: flex;
+}
+
+input[type=text], input[type=email], input[type=tel], select, textarea{
+    width: 100%;
+    font-size: 15px;
+    padding: 1em;
+    border: 2px solid partial.$secondary-color;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin: 0.5em 1em 1em 1em;
+    font-family: partial.$font;
+        &::placeholder{
+            color: partial.$text-color;
+        }
+}
+
+input[type=submit]{
+    @include partial.btn;
+    font-size: 15px;
+    border: none;
+    width: 100%;
+    margin: 0 1em;
+    cursor: pointer;
+        
+        &:hover{ //kunne også være blevet tilføjet i mixin
+            background-color: partial.$secondary-color;
+            transition: 0.3s ease-in-out;
+        }
+}
+
+.visually-hidden { //kodestykket kommer fra https://www.a11y-collective.com/blog/visually-hidden/
+    border: 0;
+    clip-path: inset(50%);
+    height: 1px;
+    margin: 0;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+}
+
+/*footer*/
+footer:nth-of-type(1){
+    grid-column: 1/6;
+    background-color: partial.$footer-color;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 1em 4em;
+        p, h3{
+            color: partial.$nav-color;
+            line-height: 0.5;
+            font-style: normal;
+        }
+        h3{
+            font-size: 18px;
+        }
+        a{
+            color: partial.$nav-color;
+            text-decoration: underline;
+                &:hover{
+                    color: partial.$primary-color;
+                }
+        }
+        .logo-footer{
+            width: 100px;
+            height: auto;
+        }
+}
+
+.footer-left{
+    grid-column: 1/2;
+}
+
+.footer-right{
+    grid-column: 2/3;
+    text-align: right;
+    margin: auto 0;
+}
+
+footer:nth-of-type(2){
+    grid-column: 1/6;
+    background-color: partial.$secondary-color;
+    text-align: center;
+        p{
+            color: partial.$bg-color;
+        }
+}
+
+
+/*mobil og tablet*/
+@media screen and (max-width: 900px){
+    header{
+        display: inline;
+    }
+
+    nav{
+        color: partial.$primary-color;
+            #bars{
+                display: flex;
+                border: none;
+                background: transparent;
+                font-size: 2.3em;
+                color: partial.$primary-color;
+                cursor: pointer;
+            }
+
+            ul{
+                display: none;
+                height: auto;
+                border-top: 4px solid partial.$primary-color;
+                flex-direction: column;
+                    li{
+                        display: flex;
+                    }
+            }
+    }
+}
